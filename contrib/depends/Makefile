@@ -1,12 +1,14 @@
 .NOTPARALLEL :
 
+# The Anero Project — https://getanero.org
+#
 # Pattern rule to print variables, e.g. make print-all_packages
 print-%: FORCE
 	@echo '$($*)'
 
 SOURCES_PATH ?= $(BASEDIR)/sources
 BASE_CACHE ?= $(BASEDIR)/built
-FALLBACK_DOWNLOAD_PATH ?= https://downloads.getmonero.org/depends-sources
+FALLBACK_DOWNLOAD_PATH ?= https://downloads.getanero.org/depends-sources
 
 BUILD = $(shell ./config.guess)
 HOST ?= $(BUILD)
