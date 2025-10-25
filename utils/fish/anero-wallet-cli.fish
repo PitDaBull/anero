@@ -1,0 +1,21 @@
+complete -c anero-wallet-cli -f
+
+complete -c anero-wallet-cli -l help -d "Produce help message"
+complete -c anero-wallet-cli -l version -d "Output version information"
+complete -c anero-wallet-cli -l daemon-address -r -d "Use daemon instance at <host>:<port>"
+complete -c anero-wallet-cli -l daemon-host -r -d "Use daemon instance at host <arg> instead of localhost"
+complete -c anero-wallet-cli -l proxy -r -d "[<ip>:]<port> SOCKS proxy to use for daemon connections"
+complete -c anero-wallet-cli -l trusted-daemon -d "Enable commands which rely on a trusted daemon"
+complete -c anero-wallet-cli -l untrusted-daemon -d "Disable commands which rely on a trusted daemon"
+complete -c anero-wallet-cli -l password -r -d "Wallet password (escape/quote as needed)"
+complete -c anero-wallet-cli -l password-file -r -F -d "Wallet password file"
+complete -c anero-wallet-cli -l daemon-port -r -d "Use daemon instance at port <arg> instead of default"
+complete -c anero-wallet-cli -l daemon-login -r -d "Specify username[:password] for daemon RPC client"
+complete -c anero-wallet-cli -l daemon-ssl -x -a "enabled disabled autodetect" -d "Enable SSL on daemon RPC connections. Default: autodetect"
+complete -c anero-wallet-cli -l daemon-ssl-private-key -r -k -a "(__fish_complete_suffix .pem)" -d "Path to a PEM format private key"
+complete -c anero-wallet-cli -l daemon-ssl-certificate -r -k -a "(__fish_complete_suffix .pem)" -d "Path to a PEM format certificate"
+complete -c anero-wallet-cli -l daemon-ssl-ca-certificates -r -F -d "Path to file containing concatenated PEM format certificate(s) to replace system CA(s)."
+complete -c anero-wallet-cli -l daemon-ssl-allowed-fingerprints -r -d "List of valid fingerprints of allowed RPC servers"
+complete -c anero-wallet-cli -l daemon-ssl-allow-any-cert -d "Allow any SSL certificate from the daemon"
+complete -c anero-wallet-cli -l daemon-ssl-allow-chained -d "Allow user chain certificates (via --daemon-ssl-ca-certificates)"
+complete -c anero-wallet-cli -l testnet -d "For testnet. Daemon must also be lau
