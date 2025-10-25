@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 // 
 // All rights reserved.
 // 
@@ -112,12 +112,12 @@ using namespace cryptonote;
 // used to target a given block weight (additional outputs may be added on top to build fee)
 #define TX_WEIGHT_TARGET(bytes) (bytes*2/3)
 
-#define UNSIGNED_TX_PREFIX "Monero unsigned tx set\005"
-#define SIGNED_TX_PREFIX "Monero signed tx set\005"
-#define MULTISIG_UNSIGNED_TX_PREFIX "Monero multisig unsigned tx set\001"
+#define UNSIGNED_TX_PREFIX "Anero unsigned tx set\005"
+#define SIGNED_TX_PREFIX "Anero signed tx set\005"
+#define MULTISIG_UNSIGNED_TX_PREFIX "Anero multisig unsigned tx set\001"
 
 #define RECENT_OUTPUT_RATIO (0.5) // 50% of outputs are from the recent zone
-#define RECENT_OUTPUT_DAYS (1.8) // last 1.8 day makes up the recent zone (taken from monerolink.pdf, Miller et al)
+#define RECENT_OUTPUT_DAYS (1.8) // last 1.8 day makes up the recent zone (taken from anerolink.pdf, Miller et al)
 #define RECENT_OUTPUT_ZONE ((time_t)(RECENT_OUTPUT_DAYS * 86400))
 #define RECENT_OUTPUT_BLOCKS (RECENT_OUTPUT_DAYS * 720)
 
@@ -128,11 +128,11 @@ using namespace cryptonote;
 #define SUBADDRESS_LOOKAHEAD_MAJOR 50
 #define SUBADDRESS_LOOKAHEAD_MINOR 200
 
-#define KEY_IMAGE_EXPORT_FILE_MAGIC "Monero key image export\003"
+#define KEY_IMAGE_EXPORT_FILE_MAGIC "Anero key image export\003"
 
-#define MULTISIG_EXPORT_FILE_MAGIC "Monero multisig export\001"
+#define MULTISIG_EXPORT_FILE_MAGIC "Anero multisig export\001"
 
-#define OUTPUT_EXPORT_FILE_MAGIC "Monero output export\004"
+#define OUTPUT_EXPORT_FILE_MAGIC "Anero output export\004"
 
 #define SEGREGATION_FORK_HEIGHT 99999999
 #define TESTNET_SEGREGATION_FORK_HEIGHT 99999999
@@ -156,7 +156,7 @@ using namespace cryptonote;
 
 static const std::string MULTISIG_SIGNATURE_MAGIC = "SigMultisigPkV1";
 
-static const std::string ASCII_OUTPUT_MAGIC = "MoneroAsciiDataV1";
+static const std::string ASCII_OUTPUT_MAGIC = "AneroAsciiDataV1";
 
 static const std::string BACKGROUND_WALLET_SUFFIX = ".background";
 
@@ -168,7 +168,7 @@ namespace
   std::string get_default_ringdb_path()
   {
     boost::filesystem::path dir = tools::get_default_data_dir();
-    // remove .bitmonero, replace with .shared-ringdb
+    // remove .bitanero, replace with .shared-ringdb
     dir = dir.remove_filename();
     dir /= ".shared-ringdb";
     return dir.string();
@@ -1062,9 +1062,9 @@ uint64_t gamma_picker::pick()
     // Our method is to get the average time delta between outputs in the recent past, estimate the number of
     // outputs 'n' that would have appeared between 'chain_tip - x' and 'chain_tip', select the real output at
     // 'current_num_outputs - n', then randomly select an output from the block where that output appears.
-    // Source code to paper: https://github.com/maltemoeser/moneropaper
+    // Source code to paper: https://github.com/maltemoeser/aneropaper
     //
-    // Due to the 'default spendable age' mechanic in Monero, 'current_num_outputs' only contains
+    // Due to the 'default spendable age' mechanic in Anero, 'current_num_outputs' only contains
     // currently *unlocked* outputs, which means the earliest output that can be selected is not at the chain tip!
     // Therefore, we must offset 'x' so it matches up with the timing of the outputs being considered. We do
     // this by saying if 'x` equals the expected age of the first unlocked output (compared to the current
@@ -2201,8 +2201,8 @@ void wallet2::scan_output(const cryptonote::transaction &tx, bool miner_tx, cons
     if (!m_encrypt_keys_after_refresh && !m_processing_background_cache)
     {
       boost::optional<epee::wipeable_string> pwd = m_callback->on_get_password(pool ? "output found in pool" : "output received");
-      THROW_WALLET_EXCEPTION_IF(!pwd, error::password_needed, tr("Password is needed to compute key image for incoming monero"));
-      THROW_WALLET_EXCEPTION_IF(!verify_password(*pwd), error::password_needed, tr("Invalid password: password is needed to compute key image for incoming monero"));
+      THROW_WALLET_EXCEPTION_IF(!pwd, error::password_needed, tr("Password is needed to compute key image for incoming anero"));
+      THROW_WALLET_EXCEPTION_IF(!verify_password(*pwd), error::password_needed, tr("Invalid password: password is needed to compute key image for incoming anero"));
       m_encrypt_keys_after_refresh.reset(new wallet_keys_unlocker(*this, &*pwd));
     }
   }
@@ -4049,10 +4049,10 @@ void wallet2::refresh(bool trusted_daemon, uint64_t start_height, uint64_t & blo
   uint64_t blocks_start_height;
   std::vector<cryptonote::block_complete_entry> blocks;
   std::vector<parsed_block> parsed_blocks;
-  // TODO moneromooo-monero says this about the "refreshed" variable:
+  // TODO aneromooo-anero says this about the "refreshed" variable:
   // "I had to reorder some code to fix... a timing info leak IIRC. In turn, this undid something I had fixed before, ... a subtle race condition with the txpool.
   // It was pretty subtle IIRC, and so I needed time to think about how to refix it after the move, and I never got to it."
-  // https://github.com/monero-project/monero/pull/6097
+  // https://github.com/anero-project/anero/pull/6097
   bool refreshed = false;
   std::shared_ptr<std::map<std::pair<uint64_t, uint64_t>, size_t>> output_tracker_cache;
   hw::device &hwdev = m_account.get_device();
@@ -6375,7 +6375,7 @@ bool wallet2::check_hard_fork_version(cryptonote::network_type nettype, const st
       uint64_t daemon_missed_fork_height = wallet_hard_forks[daemon_hard_forks.size()].height;
 
       // If the daemon missed the fork, then technically it is no longer part of
-      // the Monero network. Don't connect.
+      // the Anero network. Don't connect.
       bool daemon_missed_fork = height >= daemon_missed_fork_height || target_height >= daemon_missed_fork_height;
       if (daemon_missed_fork)
         return false;
@@ -6385,7 +6385,7 @@ bool wallet2::check_hard_fork_version(cryptonote::network_type nettype, const st
       uint64_t wallet_missed_fork_height = daemon_hard_forks[wallet_num_hard_forks].second;
 
       // If the wallet missed the fork, then technically it is no longer able
-      // to communicate with the Monero network. Don't connect.
+      // to communicate with the Anero network. Don't connect.
       bool wallet_missed_fork = height >= wallet_missed_fork_height || target_height >= wallet_missed_fork_height;
       if (wallet_missed_fork)
         return false;
@@ -14807,7 +14807,7 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
     return std::string();
   }
 
-  std::string uri = "monero:" + address;
+  std::string uri = "anero:" + address;
   unsigned int n_fields = 0;
 
   if (!payment_id.empty())
@@ -14836,9 +14836,9 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
 //----------------------------------------------------------------------------------------------------
 bool wallet2::parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &amount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error)
 {
-  if (uri.substr(0, 7) != "monero:")
+  if (uri.substr(0, 7) != "anero:")
   {
-    error = std::string("URI has wrong scheme (expected \"monero:\"): ") + uri;
+    error = std::string("URI has wrong scheme (expected \"anero:\"): ") + uri;
     return false;
   }
 
@@ -15121,7 +15121,7 @@ mms::multisig_wallet_state wallet2::get_multisig_wallet_state() const
   state.num_transfer_details = m_transfers.size();
   if (state.multisig)
   {
-    THROW_WALLET_EXCEPTION_IF(!m_original_keys_available, error::wallet_internal_error, "MMS use not possible because own original Monero address not available");
+    THROW_WALLET_EXCEPTION_IF(!m_original_keys_available, error::wallet_internal_error, "MMS use not possible because own original Anero address not available");
     state.address = m_original_address;
     state.view_secret_key = m_original_view_secret_key;
   }

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 // 
 // All rights reserved.
 // 
@@ -614,8 +614,8 @@ bool t_rpc_command_executor::mining_status() {
     uint64_t daily = 86400ull / mres.block_target * mres.block_reward * ratio;
     uint64_t monthly = 86400ull / mres.block_target * 30.5 * mres.block_reward * ratio;
     uint64_t yearly = 86400ull / mres.block_target * 356 * mres.block_reward * ratio;
-    tools::msg_writer() << "Expected: " << cryptonote::print_money(daily) << " monero daily, "
-        << cryptonote::print_money(monthly) << " monero monthly, " << cryptonote::print_money(yearly) << " yearly";
+    tools::msg_writer() << "Expected: " << cryptonote::print_money(daily) << " anero daily, "
+        << cryptonote::print_money(monthly) << " anero monthly, " << cryptonote::print_money(yearly) << " yearly";
   }
 
   return true;
@@ -1421,8 +1421,8 @@ bool t_rpc_command_executor::stop_daemon()
 //# ifdef WIN32
 //    // Stop via service API
 //    // TODO - this is only temporary!  Get rid of hard-coded constants!
-//    bool ok = windows::stop_service("BitMonero Daemon");
-//    ok = windows::uninstall_service("BitMonero Daemon");
+//    bool ok = windows::stop_service("BitAnero Daemon");
+//    ok = windows::uninstall_service("BitAnero Daemon");
 //    //bool ok = windows::stop_service(SERVICE_NAME);
 //    //ok = windows::uninstall_service(SERVICE_NAME);
 //    if (ok)
@@ -1466,10 +1466,10 @@ bool t_rpc_command_executor::print_status()
   bool daemon_is_alive = m_rpc_client->check_connection();
 
   if(daemon_is_alive) {
-    tools::success_msg_writer() << "monerod is running";
+    tools::success_msg_writer() << "anerod is running";
   }
   else {
-    tools::fail_msg_writer() << "monerod is NOT running";
+    tools::fail_msg_writer() << "anerod is NOT running";
   }
 
   return true;

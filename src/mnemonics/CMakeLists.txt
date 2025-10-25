@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -31,11 +31,11 @@ set(mnemonics_sources
 
 set(mnemonics_headers)
 
-monero_find_all_headers(mnemonics_private_headers "${CMAKE_CURRENT_SOURCE_DIR}")
+anero_find_all_headers(mnemonics_private_headers "${CMAKE_CURRENT_SOURCE_DIR}")
 
-monero_private_headers(mnemonics
+anero_private_headers(mnemonics
   ${mnemonics_private_headers})
-monero_add_library(mnemonics
+anero_add_library(mnemonics
   ${mnemonics_sources}
   ${mnemonics_headers}
   ${mnemonics_private_headers})

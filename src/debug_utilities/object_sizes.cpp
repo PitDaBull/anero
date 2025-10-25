@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Monero Project
+// Copyright (c) 2017-2024, The Anero Project
 //
 // All rights reserved.
 //
@@ -108,12 +108,12 @@ int main(int argc, char* argv[])
   SL(tools::wallet2::unsigned_tx_set);
   SL(tools::wallet2::signed_tx_set);
 
-  SL(Monero::WalletImpl);
-  SL(Monero::AddressBookRow);
-  SL(Monero::TransactionInfoImpl);
-  SL(Monero::TransactionHistoryImpl);
-  SL(Monero::PendingTransactionImpl);
-  SL(Monero::UnsignedTransactionImpl);
+  SL(Anero::WalletImpl);
+  SL(Anero::AddressBookRow);
+  SL(Anero::TransactionInfoImpl);
+  SL(Anero::TransactionHistoryImpl);
+  SL(Anero::PendingTransactionImpl);
+  SL(Anero::UnsignedTransactionImpl);
 
   return 0;
 }

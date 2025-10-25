@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -35,7 +35,7 @@
 #include <vector>
 
 
-namespace Monero {
+namespace Anero {
 
 class WalletImpl;
 class PendingTransactionImpl : public PendingTransaction

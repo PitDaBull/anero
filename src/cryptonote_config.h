@@ -210,7 +210,7 @@
 
 namespace config
 {
-  uint64_t const DEFAULT_FEE_ATOMIC_XMR_PER_KB = 500; // placeholder
+  uint64_t const DEFAULT_FEE_ATOMIC_ANR_PER_KB = 500; // placeholder
   uint8_t const FEE_CALCULATION_MAX_RETRIES = 10;
   uint64_t const DEFAULT_DUST_THRESHOLD = ((uint64_t)2000000000);
   uint64_t const BASE_REWARD_CLAMP_THRESHOLD = ((uint64_t)100000000);
@@ -251,7 +251,7 @@ namespace config
   const unsigned char HASH_KEY_CLSAG_ROUND[] = "CLSAG_round";
   const unsigned char HASH_KEY_CLSAG_AGG_0[] = "CLSAG_agg_0";
   const unsigned char HASH_KEY_CLSAG_AGG_1[] = "CLSAG_agg_1";
-  const char HASH_KEY_MESSAGE_SIGNING[] = "MoneroMessageSignature";
+  const char HASH_KEY_MESSAGE_SIGNING[] = "AneroMessageSignature";
   const unsigned char HASH_KEY_MM_SLOT = 'm';
   const constexpr char HASH_KEY_MULTISIG_TX_PRIVKEYS_SEED[] = "multisig_tx_privkeys_seed";
   const constexpr char HASH_KEY_MULTISIG_TX_PRIVKEYS[] = "multisig_tx_privkeys";

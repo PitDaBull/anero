@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 // 
 // All rights reserved.
 // 
@@ -1134,7 +1134,7 @@ namespace cryptonote
     switch (decimal_point)
     {
       case 12:
-        return "monero";
+        return "anero";
       case 9:
         return "millinero";
       case 6:

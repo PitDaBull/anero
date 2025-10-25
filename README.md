@@ -2,7 +2,7 @@
 *A Research-Focused Privacy Cryptocurrency based on CryptoNote*
 
 ## Overview
-The **Anero Project** is an experimental cryptocurrency built on the **CryptoNote** protocol family. Inspired by The Monero Project, Anero explores:
+The **Anero Project** is an experimental cryptocurrency built on the **CryptoNote** protocol family. Inspired by The Anero Project, Anero explores:
 
 - enhanced transaction privacy
 - novel approaches to metadata obfuscation

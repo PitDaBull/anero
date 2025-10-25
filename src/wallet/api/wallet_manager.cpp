@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -43,7 +43,7 @@
 #undef MONERO_DEFAULT_LOG_CATEGORY
 #define MONERO_DEFAULT_LOG_CATEGORY "WalletAPI"
 
-namespace Monero {
+namespace Anero {
 
 WalletManagerImpl::WalletManagerImpl()
 {

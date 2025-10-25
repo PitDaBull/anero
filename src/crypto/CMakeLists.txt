@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -60,11 +60,11 @@ include_directories(${RANDOMX_INCLUDE})
 
 set(crypto_headers)
 
-monero_find_all_headers(crypto_private_headers "${CMAKE_CURRENT_SOURCE_DIR}")
+anero_find_all_headers(crypto_private_headers "${CMAKE_CURRENT_SOURCE_DIR}")
 
-monero_private_headers(cncrypto
+anero_private_headers(cncrypto
   ${crypto_private_headers})
-monero_add_library(cncrypto
+anero_add_library(cncrypto
   ${crypto_sources}
   ${crypto_headers}
   ${crypto_private_headers})

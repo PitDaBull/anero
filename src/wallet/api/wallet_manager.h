@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -33,7 +33,7 @@
 #include "net/http.h"
 #include <string>
 
-namespace Monero {
+namespace Anero {
 
 class WalletManagerImpl : public WalletManager
 {
