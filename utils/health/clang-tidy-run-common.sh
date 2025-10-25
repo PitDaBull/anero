@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -11,12 +11,12 @@
 #    conditions and the following disclaimer.
 #
 # 2. Redistributions in binary form must reproduce the above copyright notice, this list
-#    of conditions and the following disclaimer in the documentation and/or other
-#    materials provided with the distribution.
+#    of conditions in the documentation and/or other materials provided with the
+#    distribution.
 #
 # 3. Neither the name of the copyright holder nor the names of its contributors may be
-#    used to endorse or promote products derived from this software without specific
-#    prior written permission.
+#    used to endorse or promote products derived from this software without prior written
+#    permission.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
 # EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -28,8 +28,10 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# clang-tidy runs lint checks on C & C++ sources and headers.
-# Don't use this script directly but call clang-tidy-run-cc.sh or clang-tidy-run-cpp.sh instead
+# clang-tidy executes static analysis and lint checks on Anero C & C++ sources and headers.
+# This script is invoked indirectly via:
+#   clang-tidy-run-cc.sh   (for C)
+#   clang-tidy-run-cpp.sh  (for C++)
 
 DIR_BUILD_BASE="build/clang-tidy"
 RESULT_BASE="clang-tidy-result"
@@ -50,12 +52,13 @@ function tidy_for_language() {
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTS=ON
 
-	make clean 					# Clean up, so that the result can be regenerated from scratch
-	time make -k 2>&1 | tee "$RESULT"		# Build and store the result. -k means: ignore errors
-	#time make -k easylogging 2>&1 | tee "$RESULT"	# Quick testing: build a single target
+	make clean                                      # Clean up to generate a fresh report
+	time make -k 2>&1 | tee "$RESULT"              # Run the scan; -k means ignore errors
+	#time make -k easylogging 2>&1 | tee "$RESULT" # Quick testing: run a smaller target
 	KPI=$(cat "$RESULT" | wc -l)
-	tar -cJvf "$RESULT.txz" "$RESULT"		# Zip the result, because it's huge.
+	tar -cJvf "$RESULT.txz" "$RESULT"              # Compress result file
 	rm -v "$RESULT"
+
 	echo ""
 	echo "Readable result stored in: $DIR_BUILD/$RESULT.txz"
 
