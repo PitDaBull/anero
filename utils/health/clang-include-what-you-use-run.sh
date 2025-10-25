@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2024-2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -28,8 +28,8 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Include What You Use analyses the complexity of your header hierarchy and proposes optimisations.
-# User documentation:
+# Include-What-You-Use audits include/header complexity and suggests optimizations
+# Documentation:
 # https://github.com/include-what-you-use/include-what-you-use/blob/master/README.md
 
 # Build variables
@@ -39,37 +39,39 @@ DIR_BUILD="build/clang-$PROG_SHORT"
 
 RESULT="$PROG_SHORT-result.txt"
 
-if hash "$PROG"; then
-	echo "Found: $PROG"
+if hash "$PROG" 2>/dev/null; then
+    echo "Found: $PROG"
 else
-	echo "Couldn't find: $PROG"
-	echo "Please run the below command to install $PROG:"
-	echo "sudo apt install $PROG_SHORT"
-	exit 1
+    echo "Couldn't find: $PROG"
+    echo "To install $PROG, run:"
+    echo "sudo apt install $PROG_SHORT"
+    exit 1
 fi
 
 mkdir -p "$DIR_BUILD" && cd "$DIR_BUILD"
-rm `find . -name "CMakeCache.txt"` || true
+rm -f $(find . -name "CMakeCache.txt") 2>/dev/null || true
 
-UWYU_COMMAND="$PROG;-Xiwyu;any;-Xiwyu;iwyu;-Xiwyu;args" # Copy-pasted from the user docs.
-	
+IWYU_COMMAND="$PROG;-Xiwyu;any;-Xiwyu;iwyu;-Xiwyu;args" # Defined per documentation
+
 cmake ../.. \
 -DCMAKE_C_COMPILER=clang \
 -DCMAKE_CXX_COMPILER=clang++ \
 -DUSE_CCACHE=ON \
--DCMAKE_C_INCLUDE_WHAT_YOU_USE="$UWYU_COMMAND" \
--DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="$UWYU_COMMAND" \
+-DCMAKE_C_INCLUDE_WHAT_YOU_USE="$IWYU_COMMAND" \
+-DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="$IWYU_COMMAND" \
 -DBUILD_SHARED_LIBS=ON \
 -DBUILD_TESTS=ON
 
-make clean					# Clean up to generate the full report
-time make -k 2>&1 | tee "$RESULT"		# Run the scan. -k means: ignore errors
-#time make -k easylogging 2>&1 | tee $RESULT	# Quick testing: build a single target
-KPI=$(cat "$RESULT" | wc -l)
-tar -cJvf "$RESULT.txz" "$RESULT"		# Zip the result, because it's huge.
+make clean                                      # Clean prior to generating full report
+time make -k 2>&1 | tee "$RESULT"               # Run analysis; -k keeps going on errors
+#time make -k easylogging 2>&1 | tee $RESULT    # Example: analyze a single target
+
+KPI=$(wc -l < "$RESULT")
+tar -cJvf "$RESULT.txz" "$RESULT"               # Compress large results
 rm -v "$RESULT"
 
 echo ""
-echo "Readable result stored in: $DIR_BUILD/$RESULT.gz"
+echo "Readable compressed result stored in: $DIR_BUILD/$RESULT.txz"
 
 echo "$KPI" > "kpis.txt"
+echo "Saved key performance metric to kpis.txt"
