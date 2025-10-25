@@ -1,8 +1,10 @@
-# Brewfile for Monero
-# A homebrew Brewfile installs all required dependencies in one shot
-# see https://coderwall.com/p/afmnbq/homebrew-s-new-feature-brewfiles
-#     https://github.com/Homebrew/homebrew-bundle
-# execute brew bundle in the directory containing the Brewfile
+# Brewfile for Anero
+# A Homebrew Brewfile installs all required dependencies in one shot.
+# See:
+#   https://coderwall.com/p/afmnbq/homebrew-s-new-feature-brewfiles
+#   https://github.com/Homebrew/homebrew-bundle
+#
+# Execute `brew bundle` in the directory containing this Brewfile.
 
 tap "homebrew/bundle"
 
