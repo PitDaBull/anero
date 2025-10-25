@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2024-2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -28,8 +28,8 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# clang-tidy runs lint checks on C & C++ sources and headers.
-# Run this script from the source directory.
+# clang-tidy executes static analysis and lint checks on Anero C sources.
+# Run this script from the Anero root source directory.
 
 DIR_THIS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source "$DIR_THIS/clang-tidy-run-common.sh"
