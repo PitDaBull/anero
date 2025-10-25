@@ -1,46 +1,35 @@
 # Intro
 
-This directory contains tools, which can be used for checking the health of the project, like build/run time analyzers, lints, etc.
+This directory contains tools which can be used for checking the health of **The Anero Project**, such as build/run time analyzers, lints, and other diagnostic utilities.
 
 # Usage
 
-Unless it's stated differently, these scripts should be called from a given source directory, where you want the checks to be performed, for instance:
+Unless stated otherwise, these scripts should be executed from within the source directory where you want the checks performed, for example:
 
-`og@ghetto:~/dev/monero$ utils/health/clang-build-time-analyzer-run.sh`
+`user@host:~/dev/anero$ utils/health/clang-build-time-analyzer-run.sh`
 
 ## ClangBuildAnalyzer
 
-`utils/health/clang-build-time-analyzer-run.sh`
-The CBA helps in finding culprints of slow compilation.
-On the first run, the script will complain about the missing ClangBuildAnalyzer binary and will point you to another script, which is able to clone and build the required binary.
+`utils/health/clang-build-time-analyzer-run.sh`  
+The Clang Build Analyzer helps identify culprits of slow compilation.
+On the first run, the script will report that the ClangBuildAnalyzer binary is missing and will point you to another script that can clone and build the required binary.
 
 ## clang-tidy
 
-`utils/health/clang-tidy-run-cc.sh`
-`utils/health/clang-tidy-run-cpp.sh`
-Performs Lint checks on the source code and stores the result in the build directory. More information on the [home page](https://clang.llvm.org/extra/clang-tidy/).
+`utils/health/clang-tidy-run-cc.sh`  
+`utils/health/clang-tidy-run-cpp.sh`  
+Performs lint checks on the project’s source code and stores the results in the build directory.  
+More information can be found on the [clang-tidy home page](https://clang.llvm.org/extra/clang-tidy/).
 
 ## include-what-you-use
 
-`utils/health/clang-include-what-you-use-run.sh`
-Analyses the header file hierarchy and delivers hints on how to reduce their complexity. More information on the [home page](https://include-what-you-use.org/).
-
+`utils/health/clang-include-what-you-use-run.sh`  
+Analyzes header dependencies and provides suggestions on how to reduce complexity and improve compile-time efficiency.  
+More information can be found on the [Include What You Use home page](https://include-what-you-use.org/).
 
 ## Valgrind checks
 
-`utils/health/valgrind-tests.sh`
-This script is able to run valgrind's callgrind, cachegrind and memcheck for a given set of executables.
-It expects ONE PARAMETER, which points to a file with paths to executables and their arguments, written line by line. For example:
-
-```
-ls -l -h
-build/tests/unit_tests/unit_tests
-```
-
-The `*.out` results can be interpreted with the `kcachegrind` tool. 
-The memcheck output is just a readable text file with a summary at the end.
-
-# Footer
-
-Responsible: mj-xmr
+`utils/health/valgrind-tests.sh`  
+This script can run valgrind’s callgrind, cachegrind, and memcheck tools against a given list of executables.
+It expects **one** parameter pointing to a file containing paths to executables and their arguments, one per line. For example:
 
