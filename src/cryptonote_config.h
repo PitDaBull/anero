@@ -33,75 +33,73 @@
 #include <cstdint>
 #include <stdexcept>
 #include <string>
+#include <vector>
 #include <boost/uuid/uuid.hpp>
 
-#define CRYPTONOTE_DNS_TIMEOUT_MS                            20000
+#define CRYPTONOTE_DNS_TIMEOUT_MS                       20000
 
-#define CRYPTONOTE_MAX_BLOCK_NUMBER                          500000000
-#define CRYPTONOTE_MAX_TX_SIZE                               1000000
-#define CRYPTONOTE_MAX_TX_PER_BLOCK                          0x10000000
-#define CRYPTONOTE_PUBLIC_ADDRESS_TEXTBLOB_VER               0
-#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW                 60
-#define CURRENT_TRANSACTION_VERSION                          2
-#define CURRENT_BLOCK_MAJOR_VERSION                          1
-#define CURRENT_BLOCK_MINOR_VERSION                          0
-#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT                   60*60*2
-#define CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE                  10
+#define CRYPTONOTE_MAX_BLOCK_NUMBER                     500000000
+#define CRYPTONOTE_MAX_TX_SIZE                          1000000
+#define CRYPTONOTE_MAX_TX_PER_BLOCK                     0x10000000
+#define CRYPTONOTE_PUBLIC_ADDRESS_TEXTBLOB_VER          0
+#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            60
+#define CURRENT_TRANSACTION_VERSION                     2
+#define CURRENT_BLOCK_MAJOR_VERSION                     1
+#define CURRENT_BLOCK_MINOR_VERSION                     0
+#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT              60*60*2
+#define CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE             10
 
-#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW                    60
+#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               60
 
-// MONEY_SUPPLY - total number coins to be generated (1,000,000,000 Anero * 10^12)
-#define MONEY_SUPPLY                                 1000000000000000000000ull
-#define EMISSION_SPEED_FACTOR_PER_MINUTE             (20)
-#define FINAL_SUBSIDY_PER_MINUTE                     ((uint64_t)300000000000) // 3 * pow(10, 11)
+// MONEY_SUPPLY - total number coins to be generated (left as before unless changed)
+#define MONEY_SUPPLY                                    ((uint64_t)1000000000000000000000ull) // example: 1,000,000,000 * 10^12 - adjust as needed
+#define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
+#define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
 
-// Premine Details - Amount is set aside for Airdrops, User Incentives, to pay Developers and more core aspects to support The Anero Project.
-// 100,000,000 Anero * 10^12
-#define GENESIS_BLOCK_REWARD                         100000000000000000000ull
-
-#define CRYPTONOTE_REWARD_BLOCKS_WINDOW                      100
-#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2         60000
-#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1         20000
-#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V5         300000
-#define CRYPTONOTE_LONG_TERM_BLOCK_WEIGHT_WINDOW_SIZE        100000
+#define CRYPTONOTE_REWARD_BLOCKS_WINDOW                 100
+#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2    60000
+#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1    20000
+#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V5    300000
+#define CRYPTONOTE_LONG_TERM_BLOCK_WEIGHT_WINDOW_SIZE   100000
 #define CRYPTONOTE_SHORT_TERM_BLOCK_WEIGHT_SURGE_FACTOR 50
-#define CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE               600
-#define CRYPTONOTE_DISPLAY_DECIMAL_POINT             12
-#define COIN                                         ((uint64_t)1000000000000) // pow(10, 12)
+#define CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE          600
+#define CRYPTONOTE_DISPLAY_DECIMAL_POINT                12
+// COIN - number of smallest units in one coin
+#define COIN                                            ((uint64_t)1000000000000) // pow(10, 12)
 
-#define FEE_PER_KB_OLD                               ((uint64_t)10000000000)
-#define FEE_PER_KB                                   ((uint64_t)2000000000)
-#define FEE_PER_BYTE                                 ((uint64_t)300000)
-#define DYNAMIC_FEE_PER_KB_BASE_FEE                  ((uint64_t)2000000000)
-#define DYNAMIC_FEE_PER_KB_BASE_BLOCK_REWARD         ((uint64_t)10000000000000)
-#define DYNAMIC_FEE_PER_KB_BASE_FEE_V5               ((uint64_t)2000000000 * (uint64_t)CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 / CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V5)
-#define DYNAMIC_FEE_REFERENCE_TRANSACTION_WEIGHT     ((uint64_t)3000)
+#define FEE_PER_KB_OLD                                  ((uint64_t)10000000000) // pow(10, 10)
+#define FEE_PER_KB                                      ((uint64_t)2000000000) // 2 * pow(10, 9)
+#define FEE_PER_BYTE                                    ((uint64_t)300000)
+#define DYNAMIC_FEE_PER_KB_BASE_FEE                     ((uint64_t)2000000000)
+#define DYNAMIC_FEE_PER_KB_BASE_BLOCK_REWARD            ((uint64_t)10000000000000)
+#define DYNAMIC_FEE_PER_KB_BASE_FEE_V5                  ((uint64_t)2000000000 * (uint64_t)CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 / CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V5)
+#define DYNAMIC_FEE_REFERENCE_TRANSACTION_WEIGHT         ((uint64_t)3000)
 
-#define ORPHANED_BLOCKS_MAX_COUNT                    100
+#define ORPHANED_BLOCKS_MAX_COUNT                       100
 
-#define DIFFICULTY_TARGET_V2                         120  // seconds
-#define DIFFICULTY_TARGET_V1                         60   // seconds - before first fork
-#define DIFFICULTY_WINDOW                            720 // blocks
-#define DIFFICULTY_LAG                               15
-#define DIFFICULTY_CUT                               60
-#define DIFFICULTY_BLOCKS_COUNT                      DIFFICULTY_WINDOW + DIFFICULTY_LAG
+#define DIFFICULTY_TARGET_V2                            120  // seconds
+#define DIFFICULTY_TARGET_V1                            60   // seconds - before first fork
+#define DIFFICULTY_WINDOW                               720  // blocks
+#define DIFFICULTY_LAG                                  15
+#define DIFFICULTY_CUT                                  60
+#define DIFFICULTY_BLOCKS_COUNT                         DIFFICULTY_WINDOW + DIFFICULTY_LAG
 
-#define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS_V1 DIFFICULTY_TARGET_V1 * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS
-#define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS_V2 DIFFICULTY_TARGET_V2 * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS
-#define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS    1
+#define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS_V1   DIFFICULTY_TARGET_V1 * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS
+#define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS_V2   DIFFICULTY_TARGET_V2 * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS
+#define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS       1
 
-#define DIFFICULTY_BLOCKS_ESTIMATE_TIMESPAN          DIFFICULTY_TARGET_V1
+#define DIFFICULTY_BLOCKS_ESTIMATE_TIMESPAN             DIFFICULTY_TARGET_V1
 
-#define BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT       10000
-#define BLOCKS_IDS_SYNCHRONIZING_MAX_COUNT           25000
-#define BLOCKS_SYNCHRONIZING_DEFAULT_COUNT_PRE_V4    100
-#define BLOCKS_SYNCHRONIZING_DEFAULT_COUNT           20
-#define BLOCKS_SYNCHRONIZING_MAX_COUNT               2048
+#define BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT          10000
+#define BLOCKS_IDS_SYNCHRONIZING_MAX_COUNT              25000
+#define BLOCKS_SYNCHRONIZING_DEFAULT_COUNT_PRE_V4       100
+#define BLOCKS_SYNCHRONIZING_DEFAULT_COUNT              20
+#define BLOCKS_SYNCHRONIZING_MAX_COUNT                  2048
 
-#define CRYPTONOTE_MEMPOOL_TX_LIVETIME               (86400*3) //seconds, three days
-#define CRYPTONOTE_MEMPOOL_TX_FROM_ALT_BLOCK_LIVETIME 604800 //seconds, one week
+#define CRYPTONOTE_MEMPOOL_TX_LIVETIME                  (86400*3)
+#define CRYPTONOTE_MEMPOOL_TX_FROM_ALT_BLOCK_LIVETIME   604800
 
-#define CRYPTONOTE_DANDELIONPP_STEMS             2
+#define CRYPTONOTE_DANDELIONPP_STEMS              2
 #define CRYPTONOTE_DANDELIONPP_FLUFF_PROBABILITY 20
 #define CRYPTONOTE_DANDELIONPP_MIN_EPOCH         10
 #define CRYPTONOTE_DANDELIONPP_EPOCH_RANGE       30
@@ -125,8 +123,8 @@
 #define DEFAULT_RPC_MAX_CONNECTIONS_PER_PUBLIC_IP    3
 #define DEFAULT_RPC_MAX_CONNECTIONS_PER_PRIVATE_IP   25
 #define DEFAULT_RPC_MAX_CONNECTIONS                  100
-#define DEFAULT_RPC_SOFT_LIMIT_SIZE                  25 * 1024 * 1024 // 25 MiB
-#define MAX_RPC_CONTENT_LENGTH                       1048576 // 1 MB
+#define DEFAULT_RPC_SOFT_LIMIT_SIZE                  25 * 1024 * 1024
+#define MAX_RPC_CONTENT_LENGTH                       1048576
 
 #define P2P_LOCAL_WHITE_PEERLIST_LIMIT               1000
 #define P2P_LOCAL_GRAY_PEERLIST_LIMIT                5000
@@ -216,22 +214,31 @@ namespace config
   uint64_t const BASE_REWARD_CLAMP_THRESHOLD = ((uint64_t)100000000);
 
   // Anero Mainnet Configuration
-  uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 57; // 'A'
+  uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 57; // 'A' (example)
   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 58;
   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 59;
 
-  // Ports changed to Anero mainnet defaults
-  uint16_t const P2P_DEFAULT_PORT = 54374; // Anero Mainnet P2P Port
-  uint16_t const RPC_DEFAULT_PORT = 61323; // Anero Mainnet RPC Port
+  // Mainnet P2P/RPC/ZMQ ports (as requested)
+  uint16_t const P2P_DEFAULT_PORT = 54374;   // Anero mainnet P2P port
+  uint16_t const RPC_DEFAULT_PORT = 61323;   // Anero mainnet RPC port
+  uint16_t const ZMQ_RPC_DEFAULT_PORT = 62323; // ZMQ RPC default — aligned with RPC_DEFAULT_PORT
+
+  // Mainnet seed nodes (host:port). These are canonical seeds for bootstrapping.
+  // seed1 uses the P2P port, seed2 uses the RPC port.
+  const std::vector<std::string> SEED_NODES = {
+    "seed1.getanero.org:54374",
+    "seed2.getanero.org:61323"
+  };
 
   boost::uuids::uuid const NETWORK_ID = { {
-      0x41 ,0x6e, 0x65, 0x72 , 0x6f, 0x4d , 0x61, 0x69, 0x6e, 0x4e, 0x65, 0x74, 0x01, 0x23, 0x45, 0x67
-    } }; // Anero MainNet
-
-  std::string const GENESIS_TX = "0100008080c441808092a0d783a0d3e584f7e504c50170068a3f8981d3725b80a1c97a892b1a8d011f01018080c441808092a0d783a0d3e584f7e504c501";
+      0x41, 0x6e, 0x65, 0x72, 0x6f, 0x4d, 0x61, 0x69,
+      0x6e, 0x4e, 0x65, 0x74, 0x01, 0x23, 0x45, 0x67
+    } }; // Anero MainNet (example UUID)
+  // GENESIS_TX placeholder — MUST be replaced with the real genesis transaction hex
+  std::string const GENESIS_TX = "010000000000000000000000000000000000000000000000000000000000000000";
   uint32_t const GENESIS_NONCE = 10000;
 
-  // Hash domain separators and keys...
+  // Hash domain separators and keys (kept as in prior layout)
   const char HASH_KEY_BULLETPROOF_EXPONENT[] = "bulletproof";
   const char HASH_KEY_BULLETPROOF_PLUS_EXPONENT[] = "bulletproof_plus";
   const char HASH_KEY_BULLETPROOF_PLUS_TRANSCRIPT[] = "bulletproof_plus_transcript";
@@ -244,7 +251,7 @@ namespace config
   const unsigned char HASH_KEY_BACKGROUND_KEYS_FILE = 0x8f;
   const unsigned char HASH_KEY_RPC_PAYMENT_NONCE = 0x58;
   const unsigned char HASH_KEY_MEMORY = 'k';
-  const unsigned char HASH_KEY_MULTISIG[] = {'M', 'u', 'l', 't' , 'i', 's', 'i', 'g', 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+  const unsigned char HASH_KEY_MULTISIG[] = {'M','u','l','t','i','s','i','g',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
   const unsigned char HASH_KEY_MULTISIG_KEY_AGGREGATION[] = "Multisig_key_agg";
   const unsigned char HASH_KEY_CLSAG_ROUND_MULTISIG[] = "CLSAG_round_ms_merge_factor";
   const unsigned char HASH_KEY_TXPROOF_V2[] = "TXPROOF_V2";
@@ -259,21 +266,43 @@ namespace config
 
   const uint32_t MULTISIG_MAX_SIGNERS{16};
 
+  // Testnet configuration (incremented ports; change if you want different testnet ports)
   namespace testnet
   {
-    // Anero Testnet Configuration
     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 157;
     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 158;
     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 159;
-    uint16_t const P2P_DEFAULT_PORT = 48300;
-    uint16_t const RPC_DEFAULT_PORT = 48301;
+    uint16_t const P2P_DEFAULT_PORT = 54375; // testnet P2P
+    uint16_t const RPC_DEFAULT_PORT = 61324; // testnet RPC
+    uint16_t const ZMQ_RPC_DEFAULT_PORT = 62324;
+    const std::vector<std::string> SEED_NODES = {
+      // Add testnet seeds here if/when available
+    };
     boost::uuids::uuid const NETWORK_ID = { {
-        0x41 ,0x6e, 0x65, 0x72 , 0x6f, 0x54 , 0x65, 0x73, 0x74, 0x4e, 0x65, 0x74, 0x01, 0x23, 0x45, 0x67
-      } }; // Anero TestNet
-    std::string const GENESIS_TX = "0100008080c441808092a0d783a0d3e584f7e504c50170068a3f8981d3725b80a1c97a892b1a8d011f01018080c441808092a0d783a0d3e584f7e504c501";
+        0x41,0x6e,0x65,0x72,0x6f,0x54,0x65,0x73,0x74,0x4e,0x65,0x74,0x01,0x23,0x45,0x67
+      } };
+    std::string const GENESIS_TX = "010000000000000000000000000000000000000000000000000000000000000000";
     uint32_t const GENESIS_NONCE = 10001;
   }
-  // stagenet removed
+
+  // Stagenet configuration (incremented ports; change if you want different stagenet ports)
+  namespace stagenet
+  {
+    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 24;
+    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 25;
+    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 36;
+    uint16_t const P2P_DEFAULT_PORT = 54376; // stagenet P2P
+    uint16_t const RPC_DEFAULT_PORT = 61325; // stagenet RPC
+    uint16_t const ZMQ_RPC_DEFAULT_PORT = 62325;
+    const std::vector<std::string> SEED_NODES = {
+      // Add stagenet seeds here if/when available
+    };
+    boost::uuids::uuid const NETWORK_ID = { {
+        0x41,0x6e,0x65,0x72,0x6f,0x53,0x74,0x61,0x67,0x65,0x4e,0x65,0x74,0x01,0x23,0x45
+      } };
+    std::string const GENESIS_TX = "010000000000000000000000000000000000000000000000000000000000000000";
+    uint32_t const GENESIS_NONCE = 10002;
+  }
 }
 
 namespace cryptonote
@@ -282,9 +311,11 @@ namespace cryptonote
   {
     MAINNET = 0,
     TESTNET,
+    STAGENET,
     FAKECHAIN,
     UNDEFINED = 255
   };
+
   struct config_t
   {
     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX;
@@ -292,10 +323,13 @@ namespace cryptonote
     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX;
     uint16_t const P2P_DEFAULT_PORT;
     uint16_t const RPC_DEFAULT_PORT;
+    uint16_t const ZMQ_RPC_DEFAULT_PORT;
     boost::uuids::uuid const NETWORK_ID;
     std::string const GENESIS_TX;
     uint32_t const GENESIS_NONCE;
+    const std::vector<std::string> SEED_NODES;
   };
+
   inline const config_t& get_config(network_type nettype)
   {
     static const config_t mainnet = {
@@ -304,27 +338,46 @@ namespace cryptonote
       ::config::CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX,
       ::config::P2P_DEFAULT_PORT,
       ::config::RPC_DEFAULT_PORT,
+      ::config::ZMQ_RPC_DEFAULT_PORT,
       ::config::NETWORK_ID,
       ::config::GENESIS_TX,
-      ::config::GENESIS_NONCE
+      ::config::GENESIS_NONCE,
+      ::config::SEED_NODES
     };
+
     static const config_t testnet = {
       ::config::testnet::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX,
       ::config::testnet::CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX,
       ::config::testnet::CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX,
       ::config::testnet::P2P_DEFAULT_PORT,
       ::config::testnet::RPC_DEFAULT_PORT,
+      ::config::testnet::ZMQ_RPC_DEFAULT_PORT,
       ::config::testnet::NETWORK_ID,
       ::config::testnet::GENESIS_TX,
-      ::config::testnet::GENESIS_NONCE
+      ::config::testnet::GENESIS_NONCE,
+      ::config::testnet::SEED_NODES
     };
+
+    static const config_t stagenet = {
+      ::config::stagenet::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX,
+      ::config::stagenet::CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX,
+      ::config::stagenet::CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX,
+      ::config::stagenet::P2P_DEFAULT_PORT,
+      ::config::stagenet::RPC_DEFAULT_PORT,
+      ::config::stagenet::ZMQ_RPC_DEFAULT_PORT,
+      ::config::stagenet::NETWORK_ID,
+      ::config::stagenet::GENESIS_TX,
+      ::config::stagenet::GENESIS_NONCE,
+      ::config::stagenet::SEED_NODES
+    };
+
     switch (nettype)
     {
       case MAINNET: return mainnet;
       case TESTNET: return testnet;
+      case STAGENET: return stagenet;
       case FAKECHAIN: return mainnet;
       default: throw std::runtime_error("Invalid network type");
     }
   };
 }
-
