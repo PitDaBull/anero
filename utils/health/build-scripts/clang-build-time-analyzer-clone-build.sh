@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2024-2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -27,9 +27,9 @@
 # INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-# This script checkouts and builds ClangBuildAnalyzer.
-# The result is put into bin directory
+#
+# This script downloads and builds ClangBuildAnalyzer for The Anero Project.
+# The compiled binary will be placed in the project's bin/ directory.
 
 DIR_THIS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -39,16 +39,18 @@ DIR_OUT="$DIR_THIS/../bin"
 DIR_BUILD="build"
 
 mkdir -p "$DIR_BUILD" && cd "$DIR_BUILD"
+
 if [ ! -d "$PROG" ]; then
-	git clone https://github.com/aras-p/$PROG.git
+    git clone https://github.com/aras-p/$PROG.git
 fi
+
 cd "$PROG"
 git checkout "$TAG"
+
 mkdir -p build && cd build
 cmake ..
-make -j`nproc`
+make -j"$(nproc)"
 
 mkdir -p "$DIR_OUT"
 cp -v "$PROG" "$DIR_OUT"
-make clean # Clean the used space
-
+make clean # Clean up used space
