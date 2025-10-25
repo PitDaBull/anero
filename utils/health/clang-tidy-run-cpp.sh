@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Copyright (c) 2014-2024, The Monero Project
+# Copyright (c) 2025, The Anero Project
 #
 # All rights reserved.
 #
@@ -15,8 +15,8 @@
 #    materials provided with the distribution.
 #
 # 3. Neither the name of the copyright holder nor the names of its contributors may be
-#    used to endorse or promote products derived from this software without specific
-#    prior written permission.
+#    used to endorse or promote products derived from this software without prior written
+#    permission.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
 # EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -28,8 +28,8 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# clang-tidy runs lint checks on C & C++ sources and headers.
-# Run this script from the source directory.
+# clang-tidy runs lint checks on Anero C++ sources and headers.
+# Run this script from the project source directory.
 
 DIR_THIS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source "$DIR_THIS/clang-tidy-run-common.sh"
