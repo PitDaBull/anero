@@ -156,6 +156,10 @@
 #define RPC_IP_FAILS_BEFORE_BLOCK                    3
 
 #define CRYPTONOTE_NAME                              "anero"
+
+// Premines 100 Million to The Anero Project for Airdrops, ICO's, paying developers and other core needs of The Anero Network.
+#define PREMINE_AMOUNT (100000000ULL * COIN)
+
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME           "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME      "lock.mdb"
 #define P2P_NET_DATA_FILENAME                        "p2pstate.bin"

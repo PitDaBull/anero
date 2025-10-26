@@ -46,6 +46,7 @@ using namespace epee;
 #define MONERO_DEFAULT_LOG_CATEGORY "cn"
 
 namespace cryptonote {
+  static bool premine_applied = false; // added by script
 
   struct integrated_address {
     account_public_address adr;
@@ -82,6 +83,12 @@ namespace cryptonote {
   //-----------------------------------------------------------------------------------------------
   bool get_block_reward(size_t median_weight, size_t current_block_weight, uint64_t already_generated_coins, uint64_t &reward, uint8_t version) {
     static_assert(DIFFICULTY_TARGET_V2%60==0&&DIFFICULTY_TARGET_V1%60==0,"difficulty targets must be a multiple of 60");
+    // Premine injected
+    if (!premine_applied && already_generated_coins == 0) {
+        reward = PREMINE_AMOUNT;
+        premine_applied = true;
+        return true;
+    }
     const int target = version < 2 ? DIFFICULTY_TARGET_V1 : DIFFICULTY_TARGET_V2;
     const int target_minutes = target / 60;
     const int emission_speed_factor = EMISSION_SPEED_FACTOR_PER_MINUTE - (target_minutes-1);
