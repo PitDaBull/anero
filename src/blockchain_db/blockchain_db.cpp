@@ -1,21 +1,21 @@
 // Copyright (c) 2025, The Anero Project
-// 
+//
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are
 // permitted provided that the following conditions are met:
-// 
+//
 // 1. Redistributions of source code must retain the above copyright notice, this list of
 //    conditions and the following disclaimer.
-// 
+//
 // 2. Redistributions in binary form must reproduce the above copyright notice, this list
 //    of conditions and the following disclaimer in the documentation and/or other
 //    materials provided with the distribution.
-// 
+//
 // 3. Neither the name of the copyright holder nor the names of its contributors may be
 //    used to endorse or promote products derived from this software without specific
 //    prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
@@ -152,7 +152,7 @@ bool txpool_tx_meta_t::upgrade_relay_method(relay_method method) noexcept
 
 const command_line::arg_descriptor<std::string> arg_db_sync_mode = {
   "db-sync-mode"
-, "Specify sync option, using format [safe|fast|fastest]:[sync|async]:[<nblocks_per_sync>[blocks]|<nbytes_per_sync>[bytes]]." 
+, "Specify sync option, using format [safe|fast|fastest]:[sync|async]:[<nblocks_per_sync>[blocks]|<nbytes_per_sync>[bytes]]."
 , "fast:async:250000000bytes"
 };
 const command_line::arg_descriptor<bool> arg_db_salvage  = {
@@ -224,12 +224,8 @@ void BlockchainDB::add_transaction(const crypto::hash& blk_hash, const transacti
 
   std::vector<uint64_t> amount_output_indices(tx.vout.size());
 
-  // iterate tx.vout using indices instead of C++11 foreach syntax because
-  // we need the index
   for (uint64_t i = 0; i < tx.vout.size(); ++i)
   {
-    // miner v2 txes have their coinbase output in one single out to save space,
-    // and we store them as rct outputs with an identity mask
     if (miner_tx && tx.version == 2)
     {
       cryptonote::tx_out vout = tx.vout[i];
@@ -257,7 +253,6 @@ uint64_t BlockchainDB::add_block( const std::pair<block, blobdata>& blck
 {
   const block &blk = blck.first;
 
-  // sanity
   if (blk.tx_hashes.size() != txs.size())
     throw std::runtime_error("Inconsistent tx/hashes sizes");
 
@@ -267,8 +262,6 @@ uint64_t BlockchainDB::add_block( const std::pair<block, blobdata>& blck
   time_blk_hash += time1;
 
   uint64_t prev_height = height();
-
-  // call out to add the transactions
 
   time1 = epee::misc_utils::get_tick_count();
 
@@ -293,7 +286,6 @@ uint64_t BlockchainDB::add_block( const std::pair<block, blobdata>& blck
   TIME_MEASURE_FINISH(time1);
   time_add_transaction += time1;
 
-  // call out to subclass implementation to add the block & metadata
   time1 = epee::misc_utils::get_tick_count();
   add_block(blk, block_weight, long_term_block_weight, cumulative_difficulty, coins_generated, num_rct_outs, blk_hash);
   TIME_MEASURE_FINISH(time1);
@@ -345,7 +337,6 @@ void BlockchainDB::remove_transaction(const crypto::hash& tx_hash)
     }
   }
 
-  // need tx as tx.vout has the tx outputs, and the output amounts are needed
   remove_transaction_data(tx_hash, tx);
 }
 
@@ -446,20 +437,14 @@ void BlockchainDB::fixup()
     return;
   }
 
-  // There was a bug that would cause key images for transactions without
-  // any outputs to not be added to the spent key image set. There are two
-  // instances of such transactions on mainnet, in blocks 202612 and 685498.
-  // On testnet, there are no such transactions
-  // See commit 533acc30eda7792c802ea8b6417917fa99b8bc2b for the fix
-  // Since its been 8 years since the fix was implemented, we can safely force
-  // nodes to re-sync if the bug is present in their chain.
+  // Legacy Cryptonote fixup comment retained for compatibility reasoning
+
   static const char * const mainnet_genesis_hex = "418015bb9ae982a1975da7d79277c2705727a56894ba0fb246adaabb1f4632e3";
   crypto::hash mainnet_genesis_hash;
   epee::string_tools::hex_to_pod(mainnet_genesis_hex, mainnet_genesis_hash );
 
   if (get_block_hash_from_height(0) == mainnet_genesis_hash)
   {
-    // From tx 17ce4c8feeb82a6d6adaa8a89724b32bf4456f6909c7f84c8ce3ee9ebba19163
     static const char * const first_missing_key_image_202612 =
       "121bf6ae1596983b703d62fecf60ea7dd3c3909acf1e0911652e7dadb420ed12";
 
@@ -496,4 +481,4 @@ bool BlockchainDB::txpool_tx_matches_category(const crypto::hash& tx_hash, relay
   return false;
 }
 
-}  // namespace cryptonote
+} // namespace cryptonote
