@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=/home/onyxnode/Projects/The Anero Project/anero/translations
+source_dir=/home/onyxnode/anero/translations
 work_dir=
 

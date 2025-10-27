@@ -92,3 +92,93 @@ gmake[1]: Leaving directory '/home/onyxnode/Projects/The Anero Project/anero/CMa
 
 
 
+Determining if the -Wl,--no-undefined linker flag is supported passed with the following output:
+Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6ead4/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_6ead4.dir/build.make CMakeFiles/cmTC_6ead4.dir/build
+gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6ead4.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -Wl,--no-undefined  -std=c11   -Wl,--no-undefined -o CMakeFiles/cmTC_6ead4.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_6ead4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ead4.dir/link.txt --verbose=1
+/usr/bin/cc -Wl,--no-undefined  CMakeFiles/cmTC_6ead4.dir/CheckLinkerFlag.c.o -o cmTC_6ead4 
+gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the -Wl,-undefined,error linker flag is supported passed with the following output:
+Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d727a/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_d727a.dir/build.make CMakeFiles/cmTC_d727a.dir/build
+gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d727a.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -Wl,-undefined,error  -std=c11   -Wl,-undefined,error -o CMakeFiles/cmTC_d727a.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_d727a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d727a.dir/link.txt --verbose=1
+/usr/bin/cc -Wl,-undefined,error  CMakeFiles/cmTC_d727a.dir/CheckLinkerFlag.c.o -o cmTC_d727a 
+gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the -pie linker flag is supported passed with the following output:
+Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c97aa/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_c97aa.dir/build.make CMakeFiles/cmTC_c97aa.dir/build
+gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c97aa.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -pie  -std=c11   -pie -o CMakeFiles/cmTC_c97aa.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_c97aa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c97aa.dir/link.txt --verbose=1
+/usr/bin/cc -pie  CMakeFiles/cmTC_c97aa.dir/CheckLinkerFlag.c.o -o cmTC_c97aa 
+gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the -Wl,-z,relro linker flag is supported passed with the following output:
+Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8980d/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_8980d.dir/build.make CMakeFiles/cmTC_8980d.dir/build
+gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8980d.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -Wl,-z,relro  -std=c11   -Wl,-z,relro -o CMakeFiles/cmTC_8980d.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_8980d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8980d.dir/link.txt --verbose=1
+/usr/bin/cc -Wl,-z,relro  CMakeFiles/cmTC_8980d.dir/CheckLinkerFlag.c.o -o cmTC_8980d 
+gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the -Wl,-z,now linker flag is supported passed with the following output:
+Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e7524/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_e7524.dir/build.make CMakeFiles/cmTC_e7524.dir/build
+gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e7524.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -Wl,-z,now  -std=c11   -Wl,-z,now -o CMakeFiles/cmTC_e7524.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_e7524
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e7524.dir/link.txt --verbose=1
+/usr/bin/cc -Wl,-z,now  CMakeFiles/cmTC_e7524.dir/CheckLinkerFlag.c.o -o cmTC_e7524 
+gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the -Wl,-z,noexecstack linker flag is supported passed with the following output:
+Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_37a72/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_37a72.dir/build.make CMakeFiles/cmTC_37a72.dir/build
+gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_37a72.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -Wl,-z,noexecstack  -std=c11   -Wl,-z,noexecstack -o CMakeFiles/cmTC_37a72.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_37a72
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_37a72.dir/link.txt --verbose=1
+/usr/bin/cc -Wl,-z,noexecstack  CMakeFiles/cmTC_37a72.dir/CheckLinkerFlag.c.o -o cmTC_37a72 
+gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
+
+
+

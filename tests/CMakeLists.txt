@@ -99,7 +99,7 @@ add_test(
 #
 if (${ANERO_WALLET_CRYPTO_BENCH} STREQUAL "auto")
   set(ANERO_WALLET_CRYPTO_BENCH "cn")
-  anero_crypto_autodetect(AVAILABLE BEST)
+  monero_crypto_autodetect(AVAILABLE BEST)
   if (DEFINED AVAILABLE)
     list(APPEND ANERO_WALLET_CRYPTO_BENCH ${AVAILABLE})
   endif ()
