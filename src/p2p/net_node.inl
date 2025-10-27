@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -63,8 +63,8 @@
 #include <miniupnp/miniupnpc/upnpcommands.h>
 #include <miniupnp/miniupnpc/upnperrors.h>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.p2p"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "net.p2p"
 
 #define MIN_WANTED_SEED_NODES 12
 
@@ -1848,7 +1848,7 @@ namespace nodetool
         {
           // seeds should have hostname converted to IP already
           MDEBUG("Seed node: " << full_addr);
-          server.m_seed_nodes.push_back(MONERO_UNWRAP(net::get_network_address(full_addr, default_port)));
+          server.m_seed_nodes.push_back(ANERO_UNWRAP(net::get_network_address(full_addr, default_port)));
         }
         MDEBUG("Number of seed nodes: " << server.m_seed_nodes.size());
       }
@@ -2140,13 +2140,13 @@ namespace nodetool
       return true;
 
     static const std::vector<std::string> dns_urls = {
-      "blocklist.moneropulse.se"
-    , "blocklist.moneropulse.org"
-    , "blocklist.moneropulse.net"
-    , "blocklist.moneropulse.no"
-    , "blocklist.moneropulse.fr"
-    , "blocklist.moneropulse.de"
-    , "blocklist.moneropulse.ch"
+      "blocklist.aneropulse.se"
+    , "blocklist.aneropulse.org"
+    , "blocklist.aneropulse.net"
+    , "blocklist.aneropulse.no"
+    , "blocklist.aneropulse.fr"
+    , "blocklist.aneropulse.de"
+    , "blocklist.aneropulse.ch"
     };
 
     std::vector<std::string> records;

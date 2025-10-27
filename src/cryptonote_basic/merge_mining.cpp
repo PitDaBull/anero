@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 
 // 
 // All rights reserved.
@@ -36,8 +36,8 @@
 
 using namespace epee;
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "cn.mm"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "cn.mm"
 
 using namespace crypto;
 

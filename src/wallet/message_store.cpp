@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 
 //
 // All rights reserved.
@@ -45,8 +45,8 @@
 #include "string_tools.h"
 
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "wallet.mms"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "wallet.mms"
 
 namespace mms
 {

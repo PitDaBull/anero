@@ -33,8 +33,8 @@
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "daemon"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "daemon"
 
 namespace daemonize {
 

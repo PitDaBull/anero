@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 // 
 // All rights reserved.
 // 
@@ -545,14 +545,13 @@ namespace rpc
 
     res.info.mainnet = m_core.get_nettype() == MAINNET;
     res.info.testnet = m_core.get_nettype() == TESTNET;
-    res.info.stagenet = m_core.get_nettype() == STAGENET;
     res.info.wide_cumulative_difficulty = m_core.get_blockchain_storage().get_db().get_block_cumulative_difficulty(res.info.height - 1);
     res.info.cumulative_difficulty = (res.info.wide_cumulative_difficulty & 0xffffffffffffffff).convert_to<uint64_t>();
     res.info.block_size_limit = res.info.block_weight_limit = m_core.get_blockchain_storage().get_current_cumulative_block_weight_limit();
     res.info.block_size_median = res.info.block_weight_median = m_core.get_blockchain_storage().get_current_cumulative_block_weight_median();
     res.info.adjusted_time = m_core.get_blockchain_storage().get_adjusted_time(res.info.height);
     res.info.start_time = (uint64_t)m_core.get_start_time();
-    res.info.version = MONERO_VERSION;
+    res.info.version = ANERO_VERSION;
 
     res.status = Message::STATUS_OK;
     res.error_details = "";

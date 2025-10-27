@@ -1,0 +1,20 @@
+[Unit]
+Description=Anero Full Node
+After=network-online.target
+
+[Service]
+User=anero
+Group=anero
+WorkingDirectory=~
+StateDirectory=anero
+LogsDirectory=anero
+
+Type=simple
+ExecStart=/usr/bin/anerod --config-file /etc/anerod.conf --non-interactive
+StandardOutput=null
+StandardError=null
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

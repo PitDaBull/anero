@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef MONERO_MESSAGES_MAP_H
-#define MONERO_MESSAGES_MAP_H
+#ifndef ANERO_MESSAGES_MAP_H
+#define ANERO_MESSAGES_MAP_H
 
 #include <string>
 #include <type_traits>
@@ -99,4 +99,4 @@ namespace trezor {
 
 }}
 
-#endif //MONERO_MESSAGES_MAP_H
+#endif //ANERO_MESSAGES_MAP_H

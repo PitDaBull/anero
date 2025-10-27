@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef MONERO_TRANSPORT_H
-#define MONERO_TRANSPORT_H
+#ifndef ANERO_TRANSPORT_H
+#define ANERO_TRANSPORT_H
 
 
 #include <boost/asio.hpp>
@@ -410,4 +410,4 @@ namespace trezor {
 }}
 
 
-#endif //MONERO_TRANSPORT_H
+#endif //ANERO_TRANSPORT_H

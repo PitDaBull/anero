@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 
 // 
 // All rights reserved.
@@ -31,8 +31,8 @@
 #include <string.h>
 #include "net/buffer.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.buffer"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "net.buffer"
 
 namespace epee
 {

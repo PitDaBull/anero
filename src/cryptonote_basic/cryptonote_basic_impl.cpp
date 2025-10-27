@@ -42,11 +42,11 @@ using namespace epee;
 #include "int-util.h"
 #include "common/dns_utils.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "cn"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "cn"
 
 namespace cryptonote {
-  static bool premine_applied = false; // added by script
+  static bool premine_applied = false; // added by @crystalsedge
 
   struct integrated_address {
     account_public_address adr;

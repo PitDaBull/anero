@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 // 
 // All rights reserved.
 // 
@@ -39,8 +39,8 @@
 #include "net/net_utils_base.h"
 #include "crypto/crypto.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "cn.block_queue"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "cn.block_queue"
 
 namespace cryptonote
 {

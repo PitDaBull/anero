@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 
 //
 // All rights reserved.
@@ -35,8 +35,8 @@
 #include "net/net_parse_helpers.h"
 #include <algorithm>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "wallet.mms"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "wallet.mms"
 #define PYBITMESSAGE_DEFAULT_API_PORT 8442
 
 namespace mms

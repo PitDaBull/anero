@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -50,8 +50,8 @@
 #include "net/dandelionpp.h"
 #include "p2p/net_node.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "net.p2p.tx"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "net.p2p.tx"
 
 namespace cryptonote
 {

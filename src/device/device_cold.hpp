@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef MONERO_DEVICE_COLD_H
-#define MONERO_DEVICE_COLD_H
+#ifndef ANERO_DEVICE_COLD_H
+#define ANERO_DEVICE_COLD_H
 
 #include "wallet/wallet2.h"
 #include <boost/optional/optional.hpp>
@@ -185,4 +185,4 @@ namespace hw {
   };
 }
 
-#endif //MONERO_DEVICE_COLD_H
+#endif //ANERO_DEVICE_COLD_H

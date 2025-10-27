@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef MONERO_DEBUG_LINK_H
-#define MONERO_DEBUG_LINK_H
+#ifndef ANERO_DEBUG_LINK_H
+#define ANERO_DEBUG_LINK_H
 
 #include "transport.hpp"
 #include "messages/messages-debug.pb.h"
@@ -90,4 +90,4 @@ namespace trezor {
 }
 }
 
-#endif //MONERO_DEBUG_LINK_H
+#endif //ANERO_DEBUG_LINK_H

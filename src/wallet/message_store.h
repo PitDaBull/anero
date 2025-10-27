@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 
 //
 // All rights reserved.
@@ -48,8 +48,8 @@
 #include "serialization/containers.h"
 #include "message_transporter.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "wallet.mms"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "wallet.mms"
 #define AUTO_CONFIG_TOKEN_BYTES 4
 #define AUTO_CONFIG_TOKEN_PREFIX "mms"
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 //
 // All rights reserved.
 //
@@ -27,8 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef MONERO_EXCEPTIONS_H
-#define MONERO_EXCEPTIONS_H
+#ifndef ANERO_EXCEPTIONS_H
+#define ANERO_EXCEPTIONS_H
 
 #include <exception>
 #include <string>
@@ -190,4 +190,4 @@ namespace proto {
 }
 }
 }
-#endif //MONERO_EXCEPTIONS_H
+#endif //ANERO_EXCEPTIONS_H

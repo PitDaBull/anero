@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2024, The Anero Project
+// Copyright (c) 2025, The Anero Project
 
 // 
 // All rights reserved.
@@ -41,8 +41,8 @@
 
 #include <atomic>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "mlocker"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "mlocker"
 
 // did an mlock operation previously fail? we only
 // want to log an error once and be done with it

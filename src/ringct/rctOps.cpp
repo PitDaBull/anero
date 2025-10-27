@@ -1,6 +1,6 @@
-// Copyright (c) 2016-2024, Anero Research Labs
+// Copyright (c) 2025, The Anero Project
 //
-// Author: Shen Noether <shen.noether@gmx.com>
+//
 //
 // All rights reserved.
 //
@@ -34,8 +34,8 @@
 using namespace crypto;
 using namespace std;
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "ringct"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "ringct"
 
 #define CHECK_AND_ASSERT_THROW_MES_L1(expr, message) {if(!(expr)) {MWARNING(message); throw std::runtime_error(message);}}
 

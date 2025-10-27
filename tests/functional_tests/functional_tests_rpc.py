@@ -41,7 +41,7 @@ except:
 # a main offline anerod, does most of the tests
 # a restricted RPC anerod setup with RPC payment
 # two local online anerods connected to each other
-N_MONERODS = 5
+N_ANERODS = 5
 
 # 4 wallets connected to the main offline anerod
 # 1 wallet connected to the first local online anerod
@@ -76,7 +76,7 @@ processes = []
 outputs = []
 ports = []
 
-for i in range(N_MONERODS):
+for i in range(N_ANERODS):
   command_lines.append([str(18180+i) if x == "anerod_rpc_port" else str(18280+i) if x == "anerod_p2p_port" else str(18380+i) if x == "anerod_zmq_port" else "tcp://127.0.0.1:" + str(18480+i) if x == "anerod_zmq_pub" else builddir + "/functional-tests-directory/anerod" + str(i) if x == "anerod_data_dir" else x for x in anerod_base])
   if i < len(anerod_extra):
     command_lines[-1] += anerod_extra[i]

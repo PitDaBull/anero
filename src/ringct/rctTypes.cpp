@@ -1,7 +1,7 @@
-// Copyright (c) 2016-2024, Anero Research Labs
+// Copyright (c) 2025, The Anero Project
 //
-// Author: Shen Noether <shen.noether@gmx.com>
-// 
+//
+//
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without modification, are
@@ -35,8 +35,8 @@
 using namespace crypto;
 using namespace std;
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "ringct"
+#undef ANERO_DEFAULT_LOG_CATEGORY
+#define ANERO_DEFAULT_LOG_CATEGORY "ringct"
 
 namespace rct {
 
