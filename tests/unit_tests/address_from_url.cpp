@@ -37,7 +37,7 @@
 
 TEST(AddressFromTXT, Success)
 {
-  std::string addr = "46BeWrHpwXmHDpDEUmZBWZfoQpdc6HaERCNmx1pEYL2rAcuwufPN9rXHHtyUA4QVy66qeFQkn6sfK8aHYjA3jk3o1Bv16em";
+  std::string addr = "AYRagfJAXKiVK7UvS13yvy6z5ApVtzjvM6uSUpDpF2d935is766FZYdTKkDotShrynFM8c7UfJfur8XxAQgS9XPWCvhrbPx";
 
   std::string txtr = "oa1:anr";
   txtr += " recipient_address=";
@@ -88,7 +88,7 @@ TEST(AddressFromURL, Success)
   
   bool dnssec_result = false;
 
-  std::vector<std::string> addresses = tools::dns_utils::addresses_from_url("donate.getanero.org", dnssec_result);
+  std::vector<std::string> addresses = tools::dns_utils::addresses_from_url("getanero.org", dnssec_result);
 
   EXPECT_EQ(1, addresses.size());
   if (addresses.size() == 1)
@@ -97,7 +97,7 @@ TEST(AddressFromURL, Success)
   }
 
   // OpenAlias address with an @ instead of first .
-  addresses = tools::dns_utils::addresses_from_url("donate@getanero.org", dnssec_result);
+  addresses = tools::dns_utils::addresses_from_url("admin@getanero.org", dnssec_result);
   EXPECT_EQ(1, addresses.size());
   if (addresses.size() == 1)
   {

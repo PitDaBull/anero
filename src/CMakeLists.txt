@@ -80,6 +80,33 @@ function (anero_add_executable name)
   anero_set_target_strip    ("${name}")
 endfunction ()
 
+# === Genesis TX Tool ===
+add_executable(genesis_tx_tool
+    genesis_tx_tool.cpp
+)
+
+target_include_directories(genesis_tx_tool PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/contrib/epee/include
+    ${CMAKE_SOURCE_DIR}/external
+    ${CMAKE_SOURCE_DIR}/external/easylogging++
+)
+
+target_compile_definitions(genesis_tx_tool PRIVATE
+    -DELPP_NO_DEFAULT_LOG_FILE
+)
+
+target_link_libraries(genesis_tx_tool
+    epee
+    easylogging
+    cryptonote_basic
+    cryptonote_core
+    ringct
+    crypto
+    ${Boost_LIBRARIES}
+    pthread
+)
+
 include(Version)
 anero_add_library(version SOURCES ${CMAKE_BINARY_DIR}/version.cpp DEPENDS genversion)
 

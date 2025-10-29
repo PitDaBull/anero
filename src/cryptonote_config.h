@@ -52,7 +52,7 @@
 #define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               60
 
 // MONEY_SUPPLY - total number coins to be generated (left as before unless changed)
-#define MONEY_SUPPLY                                    ((uint64_t)1000000000000000000000ull) // example: 1,000,000,000 * 10^12 - adjust as needed
+#define MONEY_SUPPLY ((uint64_t)10000000000ULL * COIN)
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
 
@@ -230,8 +230,8 @@ namespace config
   // Mainnet seed nodes (host:port). These are canonical seeds for bootstrapping.
   // seed1 uses the P2P port, seed2 uses the RPC port.
   const std::vector<std::string> SEED_NODES = {
-    "seed1.getanero.org:54374",
-    "seed2.getanero.org:61323"
+    "3.129.167.190:54374",
+    "18.188.145.102:61323"
   };
 
   boost::uuids::uuid const NETWORK_ID = { {
@@ -239,7 +239,7 @@ namespace config
       0x6e, 0x4e, 0x65, 0x74, 0x01, 0x23, 0x45, 0x67
     } }; // Anero MainNet (example UUID)
   // GENESIS_TX placeholder — MUST be replaced with the real genesis transaction hex
-  std::string const GENESIS_TX = "010000000000000000000000000000000000000000000000000000000000000000";
+  std::string const GENESIS_TX = "013c01ff00018080c098d6c5d7e36b023987ffdeb72c9acb2c6e4172b033067ae4d5d255211eb165c5cc7003e73dd8e82101d5848d5c3b09b9078ff9719ed185b1baf59ff87f6c80a383e9d5e800dd938138";
   uint32_t const GENESIS_NONCE = 10000;
 
   // Hash domain separators and keys (kept as in prior layout)

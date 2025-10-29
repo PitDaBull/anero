@@ -1,30 +1,14 @@
 Determining if the -Wl,-z,noexecheap linker flag is supported failed with the following output:
-Change Dir: '/home/onyxnode/Projects/The Anero Project/anero/CMakeFiles/CMakeTmp'
-
-Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_92df3/fast
-/usr/bin/gmake  -f CMakeFiles/cmTC_92df3.dir/build.make CMakeFiles/cmTC_92df3.dir/build
-gmake[1]: Entering directory '/home/onyxnode/Projects/The Anero Project/anero/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_92df3.dir/CheckLinkerFlag.c.o
-/usr/bin/cc   -Wl,-z,noexecheap  -std=c11   -Wl,-z,noexecheap -MD -MT CMakeFiles/cmTC_92df3.dir/CheckLinkerFlag.c.o -MF CMakeFiles/cmTC_92df3.dir/CheckLinkerFlag.c.o.d -o CMakeFiles/cmTC_92df3.dir/CheckLinkerFlag.c.o -c "/home/onyxnode/Projects/The Anero Project/anero/cmake/CheckLinkerFlag.c"
-Linking C executable cmTC_92df3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92df3.dir/link.txt --verbose=1
-/usr/bin/cc -Wl,-z,noexecheap  CMakeFiles/cmTC_92df3.dir/CheckLinkerFlag.c.o -o cmTC_92df3 
-/usr/bin/ld: warning: -z noexecheap ignored
-gmake[1]: Leaving directory '/home/onyxnode/Projects/The Anero Project/anero/CMakeFiles/CMakeTmp'
-
-
-
-Determining if the -Wl,-z,noexecheap linker flag is supported failed with the following output:
 Change Dir: '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
 
-Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fc3e7/fast
-/usr/bin/gmake  -f CMakeFiles/cmTC_fc3e7.dir/build.make CMakeFiles/cmTC_fc3e7.dir/build
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_745b9/fast
+/usr/bin/gmake  -f CMakeFiles/cmTC_745b9.dir/build.make CMakeFiles/cmTC_745b9.dir/build
 gmake[1]: Entering directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_fc3e7.dir/CheckLinkerFlag.c.o
-/usr/bin/cc   -Wl,-z,noexecheap  -std=c11   -Wl,-z,noexecheap -o CMakeFiles/cmTC_fc3e7.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
-Linking C executable cmTC_fc3e7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc3e7.dir/link.txt --verbose=1
-/usr/bin/cc -Wl,-z,noexecheap  CMakeFiles/cmTC_fc3e7.dir/CheckLinkerFlag.c.o -o cmTC_fc3e7 
+Building C object CMakeFiles/cmTC_745b9.dir/CheckLinkerFlag.c.o
+/usr/bin/cc   -Wl,-z,noexecheap  -std=c11   -Wl,-z,noexecheap -o CMakeFiles/cmTC_745b9.dir/CheckLinkerFlag.c.o -c /home/onyxnode/anero/cmake/CheckLinkerFlag.c
+Linking C executable cmTC_745b9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_745b9.dir/link.txt --verbose=1
+/usr/bin/cc -Wl,-z,noexecheap  CMakeFiles/cmTC_745b9.dir/CheckLinkerFlag.c.o -o cmTC_745b9 
 /usr/bin/ld: warning: -z noexecheap ignored
 gmake[1]: Leaving directory '/home/onyxnode/anero/CMakeFiles/CMakeTmp'
 

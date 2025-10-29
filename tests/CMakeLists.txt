@@ -29,7 +29,7 @@
 # Parts of this file are originally copyright (c) 2012-2013 The Cryptonote developers
 # Parts of this file are originally copyright (c) 2024 The Monero Project
 
-set(ANERO_WALLET_CRYPTO_BENCH "auto" CACHE STRING "Select wallet crypto libraries for benchmarking")
+set(MONERO_WALLET_CRYPTO_BENCH "auto" CACHE STRING "Select wallet crypto libraries for benchmarking")
 
 # The docs say this only affects grouping in IDEs
 set(folder "tests")
@@ -80,7 +80,7 @@ set(hash_targets_sources
 
 set(hash_targets_headers)
 
-anero_add_minimal_executable(hash-target-tests
+monero_add_minimal_executable(hash-target-tests
   ${hash_targets_sources}
   ${hash_targets_headers})
 target_link_libraries(hash-target-tests
@@ -97,36 +97,36 @@ add_test(
 #
 # Configure wallet crypto benchmark
 #
-if (${ANERO_WALLET_CRYPTO_BENCH} STREQUAL "auto")
-  set(ANERO_WALLET_CRYPTO_BENCH "cn")
+if (${MONERO_WALLET_CRYPTO_BENCH} STREQUAL "auto")
+  set(MONERO_WALLET_CRYPTO_BENCH "cn")
   monero_crypto_autodetect(AVAILABLE BEST)
   if (DEFINED AVAILABLE)
-    list(APPEND ANERO_WALLET_CRYPTO_BENCH ${AVAILABLE})
+    list(APPEND MONERO_WALLET_CRYPTO_BENCH ${AVAILABLE})
   endif ()
-  message("Wallet crypto bench is using ${ANERO_WALLET_CRYPTO_BENCH}")
+  message("Wallet crypto bench is using ${MONERO_WALLET_CRYPTO_BENCH}")
 endif ()
 
-list(REMOVE_DUPLICATES ANERO_WALLET_CRYPTO_BENCH)
-list(REMOVE_ITEM ANERO_WALLET_CRYPTO_BENCH "cn") # always used for comparison
-set(ANERO_WALLET_CRYPTO_BENCH_NAMES "(cn)")
-foreach(BENCH IN LISTS ANERO_WALLET_CRYPTO_BENCH)
-  anero_crypto_valid(${BENCH} VALID)
+list(REMOVE_DUPLICATES MONERO_WALLET_CRYPTO_BENCH)
+list(REMOVE_ITEM MONERO_WALLET_CRYPTO_BENCH "cn") # always used for comparison
+set(MONERO_WALLET_CRYPTO_BENCH_NAMES "(cn)")
+foreach(BENCH IN LISTS MONERO_WALLET_CRYPTO_BENCH)
+  monero_crypto_valid(${BENCH} VALID)
   if (NOT VALID)
-    message(FATAL_ERROR "Invalid ANERO_WALLET_CRYPTO_BENCH option ${BENCH}")
+    message(FATAL_ERROR "Invalid MONERO_WALLET_CRYPTO_BENCH option ${BENCH}")
   endif ()
 
-  anero_crypto_get_target(${BENCH} BENCH_LIBRARY)
+  monero_crypto_get_target(${BENCH} BENCH_LIBRARY)
   list(APPEND BENCH_OBJECTS $<TARGET_OBJECTS:${BENCH_LIBRARY}>)
 
-  anero_crypto_get_namespace(${BENCH} BENCH_NAMESPACE)
-  set(ANERO_WALLET_CRYPTO_BENCH_NAMES "${ANERO_WALLET_CRYPTO_BENCH_NAMES}(${BENCH_NAMESPACE})")
+  monero_crypto_get_namespace(${BENCH} BENCH_NAMESPACE)
+  set(MONERO_WALLET_CRYPTO_BENCH_NAMES "${MONERO_WALLET_CRYPTO_BENCH_NAMES}(${BENCH_NAMESPACE})")
 endforeach ()
 
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/benchmark.h.in" "${ANERO_GENERATED_HEADERS_DIR}/tests/benchmark.h")
-anero_add_minimal_executable(anero-wallet-crypto-bench benchmark.cpp ${BENCH_OBJECTS})
-target_link_libraries(anero-wallet-crypto-bench cncrypto)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/benchmark.h.in" "${MONERO_GENERATED_HEADERS_DIR}/tests/benchmark.h")
+monero_add_minimal_executable(monero-wallet-crypto-bench benchmark.cpp ${BENCH_OBJECTS})
+target_link_libraries(monero-wallet-crypto-bench cncrypto)
 
-add_test(NAME wallet-crypto-bench COMMAND anero-wallet-crypto-bench)
+add_test(NAME wallet-crypto-bench COMMAND monero-wallet-crypto-bench)
 
 
 set(enabled_tests
