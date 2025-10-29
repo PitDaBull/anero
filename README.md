@@ -1,5 +1,6 @@
 # Anero
 *A Research-Focused Privacy Cryptocurrency based on CryptoNote*
+
 Copyright (c) 2025 The Anero Project.
 
 The Anero Project was developed using the Monero source code. The Anero Core Team has made significant changes to the original Monero source code thus making Anero unique, however to give all developers credit, Copyrights for the original source codes are displayed below:
